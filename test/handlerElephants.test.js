@@ -31,4 +31,19 @@ describe('Testes da função HandlerElephants', () => {
     const expected = ['Friday', 'Saturday', 'Sunday', 'Tuesday'];
     expect(actual).toEqual(expected);
   });
+  it('retorna null para uma string com parametro inexistente', () => {
+    const actual = handlerElephants('');
+    const expected = null;
+    expect(actual).toEqual(expected);
+  });
+  it('retorna undefined se passar um parametro vazio', () => {
+    const actual = handlerElephants();
+    const expected = undefined;
+    expect(actual).toEqual(expected);
+  });
+  it('retorna "Parâmetro inválido, é necessário uma string" se passar um parametro diferente de string', () => {
+    const actual = handlerElephants(['count']);
+    const expected = 'Parâmetro inválido, é necessário uma string';
+    expect(actual).toEqual(expected);
+  });
 });
