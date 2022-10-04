@@ -32,7 +32,5 @@ const handlerElephants = (param) => {
   }
   return computeData(param, elephants);
 };
-// console.log(getElephants());
-console.log(handlerElephants(['count']));
 
 module.exports = handlerElephants;
