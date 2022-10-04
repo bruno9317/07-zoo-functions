@@ -1,7 +1,5 @@
 const getOpeningHours = require('../src/getOpeningHours');
 
-describe('Testes da função getOpeningHours', () => {});
-
 describe('Testes da função getOpeningHours', () => {
   it('Teste não passando argumentos. Deverá retornar todos os horaris:', () => {
     const actual = getOpeningHours();
@@ -31,14 +29,32 @@ describe('Testes da função getOpeningHours', () => {
     const expected = 'The zoo is open';
     expect(actual).toEqual(expected);
   });
-  it('Para os argumentos "Thu" e "09:00-AM" deve lançar uma exceção com a mensagem: "The day must be valid. Example: Monday"', () => {
-    const actual = ('Thu', '09:00-AM');
+  test('Para os argumentos "Thu" e "09:00-AM" deve lançar uma exceção com a mensagem: "The day must be valid. Example: Monday"', () => {
+    function teste1() {
+      getOpeningHours('Thu', '09:00-AM');
+    }
     const expected = 'The day must be valid. Example: Monday';
-    expect(actual).toThrow(expected);
+    expect(teste1).toThrow(expected);
   });
-//   it('Para os argumentos "Friday" e "09:00-ZM" deve lançar uma exceção com a mensagem: "The abbreviation must be AM or PM"', () => {
-//     const actual = getOpeningHours('Friday', '09:00-ZM');
-//     const expected = 'The abbreviation must be \'AM\' or \'PM\'';
-//     expect(actual).toThrow(expected);
-//   });
+  test('Para os argumentos "Friday" e "09:00-ZM" deve lançar uma exceção com a mensagem: "The abbreviation must be AM or PM"', () => {
+    function teste2() {
+      getOpeningHours('Friday', '09:00-ZM');
+    }
+    const expected = 'The abbreviation must be \'AM\' or \'PM\'';
+    expect(teste2).toThrow(expected);
+  });
+  test('Para os argumentos "Saturday" e "C9:00-AM" deve lançar uma exceção com a mensagem: "The hour should represent a number"', () => {
+    function teste2() {
+      getOpeningHours('Saturday', 'C9:00-AM');
+    }
+    const expected = 'The hour should represent a number';
+    expect(teste2).toThrow(expected);
+  });
+  test('Para os argumentos "Sunday" e "09:c0-AM" deve lançar uma exceção com a mensagem: "The minutes should represent a number"', () => {
+    function teste2() {
+      getOpeningHours('Sunday', '09:c0-AM');
+    }
+    const expected = 'The minutes should represent a number';
+    expect(teste2).toThrow(expected);
+  });
 });
