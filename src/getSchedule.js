@@ -1,8 +1,8 @@
 const data = require('../data/zoo_data');
 
 const especies = data.species;
-const horarios = data.hours;
-const diasDaSemana = Object.keys(horarios);
+// const horarios = data.hours;
+// const diasDaSemana = Object.keys(horarios);
 
 function getSchedule(scheduleTarget) {
   // const especies = data.species;
